@@ -250,7 +250,8 @@ module.exports = !global.ZeresPluginLibrary ? class {
                                                     minutes = Number(input.split("(")[2].split(")")[0]);
                                                 }
                                                 this.settings[props.user.id] = {timezoneOption: input, timezone: minutes};
-                                            }
+                                            },
+                                            placeholder: timezone
                                         }),
                                         React.createElement('datalist', {
                                             id: 'timezones',
