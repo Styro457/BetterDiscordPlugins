@@ -30,7 +30,29 @@ const config = {
             ]
         }
     ],
-    defaultConfig: []
+    defaultConfig: [
+        {
+            type: 'switch',
+            id: 'showInPopout',
+            name: 'Show In UserPopout',
+            note: 'Whether the time should be displayed in the user popout',
+            value: true
+        },
+        {
+            type: 'switch',
+            id: 'showInProfile',
+            name: 'Show In UserProfile',
+            note: 'Whether the time should be displayed in the user profile',
+            value: true
+        },
+        {
+            type: 'switch',
+            id: '_24HourTime',
+            name: 'Use 24 Hour Clock',
+            note: 'Whether the time should be displayed using the 24 hour clock format',
+            value: false
+        }
+    ]
 };
 
 module.exports = !global.ZeresPluginLibrary ? class {
@@ -150,6 +172,8 @@ module.exports = !global.ZeresPluginLibrary ? class {
                 ));
             }));
         }
+
+        getSettingsPanel() { return this.buildSettingsPanel().getElement(); }
 
     }
 
