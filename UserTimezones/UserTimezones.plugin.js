@@ -18,7 +18,7 @@ const config = {
                 name: "Styro"
             }
         ],
-        version: "0.0.1",
+        version: "1.0.0",
         description: "Shows the time for other people on their profile.",
     },
     changelog: [
