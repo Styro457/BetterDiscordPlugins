@@ -61,6 +61,12 @@ module.exports = !global.ZeresPluginLibrary ? class {
     const { React } = DiscordModules;
     const UserPopout = WebpackModules.getByProps("UserPopoutProfileText");
 
+    const UserContextMenus = WebpackModules.findAll((module => module.default?.displayName.endsWith("UserContextMenu")));
+    const UserGenericContextMenu = WebpackModules.find((m => "UserGenericContextMenu" === m.default?.displayName));
+    UserContextMenus.push(UserGenericContextMenu);
+
+    const Menu = BdApi.findModuleByProps('MenuItem');
+
     class Clock extends React.Component {
 
         constructor(props) {
@@ -91,24 +97,23 @@ module.exports = !global.ZeresPluginLibrary ? class {
         render() {
             return React.createElement("div", { className: "userTime date-YN6TCS textRow-19NEd_" }, `Time: ${this.state.time.toLocaleTimeString()}`);
         }
-    };
+    }
 
     class plugin extends Plugin {
         constructor() {
             super();
         }
 
-
         onStart() {
-            this.patchUserPopout()
+            this.patchUserPopout();
+            //this.patchProfileActions();
+            this.patchUserContextMenus();
 
             PluginUtilities.addStyle("userTime", `
            .userTime {
              margin-top: 5px !important;
            }
            `)
-
-            WebpackModules.
         }
 
         onStop() {
@@ -120,6 +125,29 @@ module.exports = !global.ZeresPluginLibrary ? class {
             Patcher.after(UserPopout, 'UserPopoutInfo', (_this, [props], ret) => {
                 ret.props.children[1].props.children.push(React.createElement(Clock, {className: "userTime", timeZone: 0.0}));
             })
+        }
+
+        patchUserContextMenus() {
+            for (const UserContextMenu of UserContextMenus) Patcher.after(UserContextMenu, "default", ((_this, [props], ret) => {
+                const tree = ret.props.children.props.children;
+                    tree.splice(7, 0, React.createElement(Menu.MenuGroup, null, React.createElement(Menu.MenuItem, {
+                        id: "set-timezone",
+                        label: "Set Timezone",
+                        children: [React.createElement(Menu.MenuGroup, null, React.createElement(Menu.MenuItem, {
+                            color: "colorDanger",
+                            label: "Reset Preferences",
+                            id: "reset",
+                            action: () => {
+/*                                delete settings[props.user.id];
+                                this.saveSettings(settings);
+                                settings[props.user.id] = {};
+                                external_PluginApi_namespaceObject.Toasts.success(`Successfully cleared preferences for <strong>${props.user}</strong>!`);*/
+                                BdApi.alert("BUTTON");
+                            }
+                        }))]
+                    })
+                ));
+            }));
         }
 
     }
