@@ -50,7 +50,7 @@ const config = {
             id: 'showInProfile',
             name: 'Show In UserProfile',
             note: 'Whether the time should be displayed in the user profile',
-            value: true
+            value: false
         },
         {
             type: 'switch',
