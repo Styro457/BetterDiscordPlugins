@@ -22,6 +22,9 @@ const config = {
         ],
         version: "1.0.0",
         description: "Shows the time for other people on their profile.",
+        github: "https://github.com/Styro457/BetterDiscordPlugins/blob/main/UserTimezones/UserTimezones.plugin.js",
+        github_raw:
+            "https://raw.githubusercontent.com/Styro457/BetterDiscordPlugins/main/UserTimezones/UserTimezones.plugin.js",
     },
     changelog: [
         {
