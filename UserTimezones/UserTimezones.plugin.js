@@ -1,6 +1,7 @@
 /**
  * @name UserTimezones
  * @author Styro
+ * @authorId 314738406641106945
  * @description Shows the time for other people on their profile.
  * @version 1.0.0
  * @authorLink https://github.com/Styro457
