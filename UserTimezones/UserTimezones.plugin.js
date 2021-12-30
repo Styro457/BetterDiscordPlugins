@@ -95,10 +95,9 @@ module.exports = !global.ZeresPluginLibrary ? class {
 
         constructor(props) {
             super(props);
-            this.timezoneOffset = 0.0;
             const now = new Date();
             this.state = {
-                time: new Date(now - now.getTimezoneOffset() + this.timezoneOffset * 3600 * 1000)
+                time: new Date(now.getTime() + (props.timezoneOffset+now.getTimezoneOffset()) * 60000)
             };
         }
 
@@ -164,7 +163,7 @@ module.exports = !global.ZeresPluginLibrary ? class {
                 if(this.settings.showInPopout) {
                     ret.props.children[1].props.children.push(React.createElement(Clock, {
                         className: "userTime",
-                        timeZone: 0.0
+                        timezoneOffset: this.settings[props.user.id].timezone
                     }));
                 }
             })
