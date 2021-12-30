@@ -17,7 +17,9 @@ const config = {
         name: "UserTimezones",
         authors: [
             {
-                name: "Styro"
+                name: "Styro",
+                discord_id: "314738406641106945",
+                github_username: "Styro457",
             }
         ],
         version: "1.0.0",
