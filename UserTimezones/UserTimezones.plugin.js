@@ -161,10 +161,13 @@ module.exports = !global.ZeresPluginLibrary ? class {
         patchUserPopout() {
             Patcher.after(UserPopout, 'UserPopoutInfo', (_this, [props], ret) => {
                 if(this.settings.showInPopout) {
-                    ret.props.children[1].props.children.push(React.createElement(Clock, {
-                        className: "userTime",
-                        timezoneOffset: this.settings[props.user.id].timezone
-                    }));
+                    const timezone = this.settings[props.user.id];
+                    if(timezone !== undefined) {
+                        ret.props.children[1].props.children.push(React.createElement(Clock, {
+                            className: "userTime",
+                            timezoneOffset: timezone
+                        }));
+                    }
                 }
             })
         }
