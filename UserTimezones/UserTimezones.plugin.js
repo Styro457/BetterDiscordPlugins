@@ -2,7 +2,7 @@
  * @name UserTimezones
  * @author Styro
  * @description Shows the time for other people on their profile.
- * @version 0.0.1
+ * @version 1.0.0
  * @source https://github.com/Styro457/BetterDiscordPlugins/tree/dev/UserTimezones
  */
 
