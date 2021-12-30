@@ -91,9 +91,7 @@ module.exports = !global.ZeresPluginLibrary ? class {
     UserContextMenus.push(UserGenericContextMenu);
 
     const Menu = BdApi.findModuleByProps('MenuItem');
-
-    const Dropdown = WebpackModules.getByProps("SingleSelect").SingleSelect;
-
+    
     class Clock extends React.Component {
 
         constructor(props) {
