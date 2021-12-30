@@ -3,6 +3,7 @@
  * @author Styro
  * @description Shows the time for other people on their profile.
  * @version 1.0.0
+ * @authorLink https://github.com/Styro457
  * @source https://github.com/Styro457/BetterDiscordPlugins/blob/main/UserTimezones/UserTimezones.plugin.js
  * @updateUrl https://raw.githubusercontent.com/Styro457/BetterDiscordPlugins/main/UserTimezones/UserTimezones.plugin.js
  */
